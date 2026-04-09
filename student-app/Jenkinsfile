@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Compile Java') {
+            steps {
+                sh '''
+                    rm -rf build
+                    mkdir build
+                    javac -d build src/StudentApp.java
+                    jar cfe studentapp.jar StudentApp -C build .
+                '''
+            }
+        }
+
+        stage('Prepare Package Directory') {
+            steps {
+                sh '''
+                    mkdir -p package/usr/local/bin
+                    cp studentapp.jar package/usr/local/bin/
+                '''
+            }
+        }
+
+    }
+
+    post {
+        success {
+            archiveArtifacts artifacts: '*.deb'
+            echo 'Student Application Deployed Successfully'
+        }
+    }
+}
