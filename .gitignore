@@ -1,0 +1,24 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+env
+.env
+
+# Generated at runtime / build time - not source
+*.db
+rag/index/
+output/
+my_graph.png
+# SQLite side files (contain saved conversations)
+*.db-shm
+*.db-wal
+
+# Local Claude Code settings
+.claude/
