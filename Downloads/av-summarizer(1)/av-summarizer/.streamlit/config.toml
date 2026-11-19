@@ -1,3 +1,0 @@
-[server]
-# Allow uploads of long recordings (MB).
-maxUploadSize = 1024
